@@ -10,6 +10,7 @@
   --color-text-muted: #0c0c0c;
   --color-green: #44b66c;
   --color-red: #d93636;
+  --color-amber: #f59e0b;
   --color-border: #e7e7e7;
   --color-donut-light: #f9f7c7;
   --color-donut-mid: #f9eab5;
@@ -25,4 +26,12 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.animate-slide-in {
+  animation: slide-in 0.2s ease-out;
 }

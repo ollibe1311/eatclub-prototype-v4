@@ -3,6 +3,8 @@ import { SectionHeader } from "../shared/SectionHeader"
 import { Card } from "../ui/card"
 import { TrendIndicator } from "../shared/TrendIndicator"
 import { DonutChart } from "../shared/DonutChart"
+import { ProgressBar } from "../shared/ProgressBar"
+import { StreakCounter } from "../shared/StreakCounter"
 import { revenueSummary } from "../../data/mock-data"
 import { formatCurrency } from "../../lib/utils"
 
@@ -22,6 +24,8 @@ export function RevenueSummary() {
             </div>
             <DonutChart value={revenueSummary.donut.pos} total={100} size={80} />
           </div>
+          {/* A1 — Daily Revenue Target Progress Bar */}
+          <ProgressBar />
         </Card>
 
         <Card>
@@ -37,6 +41,8 @@ export function RevenueSummary() {
               </div>
             ))}
           </div>
+          {/* A4 — YoY Streak Counter */}
+          <StreakCounter />
         </Card>
       </div>
     </section>
