@@ -46,7 +46,9 @@ export function RevenueTrend({ onOpenDrawer }: RevenueTrendProps) {
           return (
             <div
               key={kpi.label}
-              className={isClickable ? "cursor-pointer hover:opacity-80 transition-opacity" : ""}
+              className={cn(
+                isClickable && "cursor-pointer rounded-2xl border-2 border-dashed border-accent-olive/30 bg-accent-olive/5 p-3 -m-3 hover:border-accent-olive/60 hover:bg-accent-olive/10 transition-all group"
+              )}
               onClick={isClickable ? onOpenDrawer : undefined}
             >
               <p className="text-3xl font-bold text-text-primary">{kpi.value}</p>
@@ -58,11 +60,13 @@ export function RevenueTrend({ onOpenDrawer }: RevenueTrendProps) {
                   <span className="w-4 border-t-2 border-dashed border-text-secondary" />
                 )}
                 <span className="text-sm text-text-secondary">{kpi.label}</span>
-                {isClickable && <span className="text-xs text-accent-olive">→ Details</span>}
               </div>
               <div className="mt-1.5">
                 <Sparkline data={kpiSparklines[sparklineKeys[i]]} color={kpi.color || "#788229"} />
               </div>
+              {isClickable && (
+                <p className="text-xs font-medium text-accent-olive mt-2 group-hover:underline">Click for breakdown →</p>
+              )}
             </div>
           )
         })}
