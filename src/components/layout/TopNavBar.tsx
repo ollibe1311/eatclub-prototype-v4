@@ -3,9 +3,7 @@ import { Button } from "../ui/button"
 import { DropdownMenu, DropdownMenuItem } from "../ui/dropdown-menu"
 import { FreshnessIndicator } from "../shared/FreshnessIndicator"
 import { AnomalyBadge } from "../shared/AnomalyBadge"
-import { SavedViewsMenu } from "../shared/SavedViewsMenu"
 import { dataFreshness, anomalies } from "../../data/mock-data"
-import { useState } from "react"
 
 interface TopNavBarProps {
   viewMode: "full" | "glance"
@@ -13,7 +11,6 @@ interface TopNavBarProps {
 }
 
 export function TopNavBar({ viewMode, onToggleView }: TopNavBarProps) {
-  const [savedView, setSavedView] = useState("default")
   const totalAnomalies = anomalies.length
   const worstSeverity = anomalies.some((a) => a.severity === "red") ? "red" as const : "gold" as const
 
@@ -66,8 +63,6 @@ export function TopNavBar({ viewMode, onToggleView }: TopNavBarProps) {
             7 days
             <ChevronDown className="w-4 h-4" />
           </Button>
-
-          <SavedViewsMenu activeView={savedView} onSelectView={setSavedView} />
 
           <FreshnessIndicator lastUpdated={dataFreshness.lastUpdated} status={dataFreshness.status} />
         </div>
